@@ -69,3 +69,8 @@ public/placeholders/  resume.pdf stub, project screenshots
 ## Placeholder Data Convention
 - All swappable content lives in `data/*.ts` typed exports.
 - Every placeholder string is prefixed `TODO:` so it's greppable.
+
+## New Locked Choices (Phase 8-100)
+- **Testing frameworks:** Vitest for component unit tests; Playwright for e2e smoke tests.
+- **Writing format:** Plain `data/*.ts` exports (not MDX) for content, consistent with the placeholder convention.
+- **Audio:** optional, off by default, original/CC0 ambience only (no external audio assets).

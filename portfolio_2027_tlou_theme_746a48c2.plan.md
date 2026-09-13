@@ -4,7 +4,7 @@ overview: Frontend-only Next.js 15 portfolio at `~/Projects/portfolio-2027`, vis
 todos:
   - id: phase-0
     content: Phase 0 — Scaffold Next.js 15 + TS + Tailwind v4 at ~/Projects/portfolio-2027, install stack, set folder structure, add transpilePackages, create PLAN/DECISIONS/PROGRESS files, verify dev boots
-    status: pending
+    status: in_progress
   - id: phase-1
     content: "Phase 1 — Design system: Tailwind tokens (TLOU palette), next/font (Fraunces + Inter), LenisProvider, grain/vignette overlay, reduced-motion hooks, UI primitives (Button/Card/Nav/Section)"
     status: pending
@@ -28,7 +28,6 @@ todos:
     status: pending
 isProject: false
 ---
-
 
 # Portfolio-2027 — The Last of Us-Inspired Frontend Build
 
@@ -192,61 +191,6 @@ Every placeholder string is prefixed `TODO:` so it's greppable.
 - Typography fine-tune: Fraunces optical sizing at display scale, body measure (max 65ch), paragraph spacing.
 - Cross-browser: Chrome, Safari, Firefox — verify WebGL fallback path, grain overlay rendering.
 - Final `TODO:` sweep: every placeholder documented in `PROGRESS.md` with a swap-in checklist.
-
-## Phased Build, Part II (Phase 8-100)
-
-### Phase 8 — Testing & tooling
-- `vitest` for component unit tests; `@testing-library/react` for user interactions.
-- Playwright e2e smoke tests covering page load, all nav anchors, quote bands, lore panel.
-- Visual regression snapshots (pixelmatch) for hero, About, Projects, Resume.
-- TypeScript strict-mode audit; `noUncheckedIndexedAccess` / `noUnusedLocals` checks.
-- ESLint + Prettier hygiene pass; enforce flat config.
-- Local git hooks via `husky` + `lint-staged` (lint on stage 1, commit on stage 2).
-
-### Phase 9 — Content depth
-- Per-project case-study pages: a `routes/projects/[slug]` deep-dive with problem/approach/outcome cards.
-- Lightweight writing/notes section sourced from local Markdown.
-- Dev-only local content-editing route that writes to in-memory state only (never persists).
-- Structured schema.org JSON-LD for projects.
-- `sitemap.xml` and OG image generation via `next/og`.
-
-### Phase 10 — World & motion depth
-- Day/night lighting cycle tied to system clock.
-- Subtle weather layer (drifting fog/rain shader) for the ruin scene.
-- Seasonal palette variants (still muted/original, not a literal swap without sign-off).
-- Scroll-linked "chapters" narrating the page as a journey through the ruin.
-- Refined page-transition choreography.
-- Custom cursor / cursor-trail treatment.
-- Ambient audio toggle (optional, off by default, original/CC0 ambience only).
-
-### Phase 11 — Accessibility & performance depth
-- Full screen-reader pass (NVDA/VoiceOver script).
-- Reduced-data mode: skip 3D + heavy assets on Save-Data / slow connection.
-- Font-loading and layout shift audit.
-- Image pipeline audit (`next/image` everywhere, AVIF/WebP).
-- Code-splitting review per route.
-- Web Vitals logged to console in dev.
-- Performance budget doc with hard KB ceilings per route.
-
-### Phase 12 — Delight & easter eggs
-- Konami-code or scroll-gesture triggered secret animation.
-- Interactive skill graph/constellation.
-- Fake retro terminal widget for playful navigation.
-- Keyboard command palette (cmd+k) for jumping sections.
-- Print stylesheet for the resume.
-- Themed 404 page.
-
-### Phase 13 — PWA & polish
-- Web app manifest + offline-caching service worker for the static shell only.
-- Favicon/OG asset set.
-- Changelog convention in PROGRESS.md.
-- Final cross-browser QA matrix.
-- Final TODO: sweep with a swap-in checklist.
-
-### Phase 14 — Launch readiness (still no deploy)
-- Written `LAUNCH_CHECKLIST.md` covering what a future session must verify before any real deploy is configured.
-- Final content-freeze pass marking every remaining TODO:.
-- Retrospective `PROGRESS.md` summary of the whole build.
 
 ---
 
