@@ -1,26 +1,137 @@
 @import "tailwindcss";
 
+/* ============================================================
+   THEME TOKENS (Tailwind v4)
+   The Last of Us-inspired palette: charcoal base, moss, rust,
+   teal accents, warm parchment text. Tokens become utilities
+   (e.g. --color-moss -> bg-moss / text-moss / border-moss).
+   ============================================================ */
+@theme {
+  /* surfaces */
+  --color-base: #1a1a18; /* near-black charcoal */
+  --color-raised: #242420; /* slightly lighter surface */
+
+  /* earth accents */
+  --color-moss: #3d4a34; /* desaturated moss green */
+  --color-rust: #8b4a32; /* rust / clay */
+  --color-teal: #4a6b6b; /* muted teal */
+
+  /* text */
+  --color-primary: #e8e4d8; /* warm off-white */
+  --color-muted: #9a9688; /* faded parchment */
+
+  /* type */
+  --font-display: var(--font-fraunces);
+  --font-sans: var(--font-inter);
+
+  /* motion */
+  --ease-organic: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ============================================================
+   BASE
+   ============================================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  color-scheme: dark;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth; /* Lenis drives this when active; harmless fallback otherwise */
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-base);
+  color: var(--color-primary);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  font-optical-sizing: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-optical-sizing: auto;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-rust) 55%, transparent);
+  color: var(--color-primary);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-teal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--color-moss) 70%, transparent) transparent;
+}
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--color-moss) 60%, transparent);
+  border-radius: 999px;
+}
+*::-webkit-scrollbar-track { background: transparent; }
+
+/* ============================================================
+   FILM GRAIN + VIGNETTE (used by <GrainOverlay />)
+   A tiling fractal-noise tile, shifted on a slow loop for a
+   subtle "living film" feel. Stays static under reduced motion.
+   ============================================================ */
+.grain-noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+}
+
+@keyframes grain-shift {
+  0% { transform: translate(0, 0); }
+  20% { transform: translate(-4%, 3%); }
+  40% { transform: translate(3%, -5%); }
+  60% { transform: translate(-3%, 4%); }
+  80% { transform: translate(5%, 2%); }
+  100% { transform: translate(0, 0); }
+}
+.animate-grain { animation: grain-shift 7s steps(6) infinite; }
+
+.vignette {
+  background: radial-gradient(
+    ellipse 120% 90% at 50% 40%,
+    transparent 45%,
+    rgba(0, 0, 0, 0.35) 80%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+@keyframes cue-pulse {
+  0%, 100% { opacity: 0.25; transform: translateY(0); }
+  50% { opacity: 0.7; transform: translateY(6px); }
+}
+.animate-cue { animation: cue-pulse 2.4s var(--ease-organic) infinite; }
+
+@keyframes leaf-drift {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-6px, 8px) rotate(-2deg); }
+}
+.animate-leaf { animation: leaf-drift 9s ease-in-out infinite; }
+
+/* ============================================================
+   REDUCED MOTION — stop all CSS animation/transition.
+   JS-driven motion (GSAP / framer-motion / R3F) is gated via the
+   useReducedMotion hook in each component.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
