@@ -8,9 +8,9 @@ One entry per completed phase. Update at the end of every session. See `AGENT.md
 | 0 | Scaffold | ✅ done |
 | 1 | Design system | ✅ done |
 | 2 | Hero + 3D overgrown ruin | ✅ done |
-| 3 | About + Skills | ⬜ pending |
-| 4 | Projects | ⬜ pending |
-| 5 | Resume + Contact + Chatbot | ⬜ pending |
+| 3 | About + Skills | 🟡 scaffolded (TODO content) |
+| 4 | Projects | 🟡 scaffolded (TODO content) |
+| 5 | Resume + Contact + Chatbot | 🟡 scaffolded (chatbot TODO) |
 | 6 | Performance + a11y | ⬜ pending |
 | 7 | Polish | ⬜ pending |
 
@@ -40,3 +40,10 @@ One entry per completed phase. Update at the end of every session. See `AGENT.md
 **Fixed:** narrowed polymorphic `Heading`/`Text` tag types (broad `ElementType` → literal tag unions) to resolve a strict-mode `children: never` type error; removed an assumed `size` prop on Heading (it sizes via `className`).
 
 **Stubbed / TODO:** real profile content; About/Skills/Projects/Resume/Contact sections — Phases 3–5.
+
+## Phase 3–5 — Content sections (scaffolded, placeholder data)
+**Shipped:** full page skeleton with themed sections + a UI barrel (`components/ui/index.ts`) and a shared `SectionIntro` helper. Sections: `About` (bio + focus card), `Skills` (grouped tag grid), `Projects` (card grid), `Resume` (experience timeline + education + download CTA), `Contact` (email CTA + socials), `Footer`. Typed placeholder data in `data/about.ts`, `data/skills.ts`, `data/projects.ts`, `data/experience.ts`, `data/contact.ts` — all marked TODO for a content swap. NavBar anchors wired (`#about/#skills/#projects/#resume/#contact`); Hero "See my work" → `#projects`; `#top` anchor on `<main>` (removed the duplicate id from the Hero section).
+
+**Verified:** lint clean, production build passes (static prerender), dev SSR renders every section + all nav ids.
+
+**TODO (content swap):** real profile details, about copy, skills, projects (+links), experience/education, socials, and the resume PDF. Phase 5 "Chatbot" not yet built — needs an API key/backend; treat as a follow-up feature.

@@ -24,7 +24,7 @@ export default function Hero() {
   const show3D = !isMobile && !reduced;
 
   return (
-    <section id="top" className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
+    <section className="relative flex min-h-screen items-center justify-center overflow-hidden px-6">
       {/* scene layer */}
       <div className="absolute inset-0" aria-hidden="true">
         {show3D ? <OvergrownRuin /> : <RuinFallback />}
