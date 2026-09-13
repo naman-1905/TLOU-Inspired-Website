@@ -9,7 +9,7 @@ export function Resume() {
   return (
     <SectionWrapper id="resume">
       <div className="flex flex-wrap items-end justify-between gap-6">
-        <SectionIntro eyebrow="Resume" title="Experience." className="mb-0" />
+        <SectionIntro eyebrow="The Long Road" title="Experience." className="mb-0" />
         <Button variant="secondary" size="md" href={profile.resumeUrl}>
           Download resume
         </Button>

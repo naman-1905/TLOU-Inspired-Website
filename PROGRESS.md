@@ -47,3 +47,8 @@ One entry per completed phase. Update at the end of every session. See `AGENT.md
 **Verified:** lint clean, production build passes (static prerender), dev SSR renders every section + all nav ids.
 
 **TODO (content swap):** real profile details, about copy, skills, projects (+links), experience/education, socials, and the resume PDF. Phase 5 "Chatbot" not yet built — needs an API key/backend; treat as a follow-up feature.
+
+## Improvement — TLOU lore & voice integration (done)
+**Shipped:** researched The Last of Us (both games) from Wikipedia + Wikiquote and wove authentic content in as a thematic layer on top of the scaffolded portfolio. New `data/lore.ts` (typed): curated iconic quotes, a "Field Notes" world glossary (Outbreak, Cordyceps, FEDRA, Quarantine Zone, Fireflies, Jackson, WLF, Seraphites), thematic through-lines, and franchise meta. New UI: `components/ui/QuoteBand.tsx` (cinematic full-width quote interlude) + `components/ui/LorePanel.tsx` (Field Notes glossary + theme chips); both exported from the barrel. Themed section eyebrows (About→Survivor, Skills→Arsenal, Projects→Expeditions, Resume→The Long Road, Contact→Signal Fire). `page.tsx` inserts two QuoteBands as interludes; `Footer` credits the theme + composer (Gustavo Santaolalla).
+
+**Verified:** lint clean, production build passes (TS clean), dev SSR renders all new content (eyebrows, both quotes, Field Notes terms, footer attribution).

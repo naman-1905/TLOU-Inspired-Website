@@ -8,7 +8,7 @@ export function Projects() {
   return (
     <SectionWrapper id="projects">
       <SectionIntro
-        eyebrow="Projects"
+        eyebrow="Expeditions"
         title="Selected work."
         description="A few things I've built — more on request."
       />

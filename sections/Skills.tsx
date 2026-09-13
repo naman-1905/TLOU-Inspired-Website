@@ -8,7 +8,7 @@ export function Skills() {
   return (
     <SectionWrapper id="skills">
       <SectionIntro
-        eyebrow="Skills"
+        eyebrow="Arsenal"
         title="Tools I reach for."
         description="The stack behind the work — a mix of craft and engineering."
       />

@@ -1,6 +1,7 @@
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { SectionIntro } from "@/components/ui/SectionIntro";
 import { Card, Text } from "@/components/ui";
+import { LorePanel } from "@/components/ui/LorePanel";
 import { aboutParagraphs, aboutHighlights } from "@/data/about";
 
 /** About — short bio + a "focus" card. Content lives in data/about.ts (TODO placeholders). */
@@ -9,7 +10,7 @@ export function About() {
     <SectionWrapper id="about">
       <div className="grid gap-12 md:grid-cols-[1.4fr_1fr] md:items-start">
         <div>
-          <SectionIntro eyebrow="About" title="Building interfaces that feel alive." />
+          <SectionIntro eyebrow="Survivor" title="Building interfaces that feel alive." />
           {aboutParagraphs.map((p, i) => (
             <Text key={i} as="p" className="mb-5 text-lg leading-relaxed text-primary/80">
               {p}
@@ -29,6 +30,8 @@ export function About() {
           </ul>
         </Card>
       </div>
+
+      <LorePanel className="mt-14" />
     </SectionWrapper>
   );
 }

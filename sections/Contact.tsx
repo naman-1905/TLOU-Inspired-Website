@@ -8,7 +8,7 @@ export function Contact() {
   return (
     <SectionWrapper id="contact">
       <div className="mx-auto max-w-2xl text-center">
-        <span className="text-xs uppercase tracking-[0.3em] text-rust/80">Contact</span>
+        <span className="text-xs uppercase tracking-[0.3em] text-rust/80">Signal Fire</span>
         <Heading as="h2" className="mt-4 text-4xl sm:text-5xl md:text-6xl">
           Let&apos;s build something that grows.
         </Heading>

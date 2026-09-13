@@ -5,3 +5,5 @@ export { Heading } from "./Heading";
 export { Text } from "./Text";
 export { SectionWrapper } from "./SectionWrapper";
 export { SectionIntro } from "./SectionIntro";
+export { QuoteBand } from "./QuoteBand";
+export { LorePanel } from "./LorePanel";
