@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type Variant = "lead" | "body" | "muted";
+type As = "p" | "span" | "div" | "blockquote";
 
 const variants: Record<Variant, string> = {
   lead: "text-lg text-primary/90 sm:text-xl",
@@ -16,11 +17,12 @@ export function Text({
   className,
   children,
 }: {
-  as?: ElementType;
+  as?: As;
   variant?: Variant;
   className?: string;
   children: ReactNode;
 }) {
-  const TagName = as;
-  return <TagName className={cn("leading-relaxed", variants[variant], className)}>{children}</TagName>;
+  const Component = as;
+  return <Component className={cn("leading-relaxed", variants[variant], className)}>{children}</Component>;
 }
+

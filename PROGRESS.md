@@ -7,7 +7,7 @@ One entry per completed phase. Update at the end of every session. See `AGENT.md
 | --- | --- | --- |
 | 0 | Scaffold | ✅ done |
 | 1 | Design system | ✅ done |
-| 2 | Hero + 3D overgrown ruin | ⬜ pending |
+| 2 | Hero + 3D overgrown ruin | ✅ done |
 | 3 | About + Skills | ⬜ pending |
 | 4 | Projects | ⬜ pending |
 | 5 | Resume + Contact + Chatbot | ⬜ pending |
@@ -31,3 +31,12 @@ One entry per completed phase. Update at the end of every session. See `AGENT.md
 **Verified:** lint clean, production build passes (static), dev server renders the themed page (grain/vignette/hero/fonts confirmed in HTML).
 
 **Stubbed / TODO:** all real content (profile details, skills, projects, experience) — Phases 3–5. Hero is text-only for now; the 3D overgrown-ruin scene + fallbacks arrive in Phase 2.
+
+## Phase 2 — Hero + 3D overgrown ruin (done)
+**Shipped:** `components/3d/OvergrownRuin.tsx` — original low-poly R3F scene (weathered wall blocks, procedural vine `tubeGeometry`, instanced swaying grass, drei `Sparkles` fireflies, fog + moss/rust lighting, slow camera drift + subtle pointer parallax). `components/3d/RuinFallback.tsx` — CSS/SVG atmospheric still used as BOTH the 3D loading placeholder (no CLS) and the permanent mobile/reduced-motion fallback. `sections/Hero.tsx` — composes hero copy + scene; WebGL loaded via `next/dynamic({ ssr:false })` and mounted only when `!isMobile && !reduced`. `app/page.tsx` → `<Hero/>`.
+
+**Verified:** lint clean, production build passes (TS clean, static prerender), dev server `GET / 200` with SSR emitting the fallback SVG + grain/vignette + NavBar + hero copy + both font vars. Live WebGL render needs a browser/GPU (not verifiable headless).
+
+**Fixed:** narrowed polymorphic `Heading`/`Text` tag types (broad `ElementType` → literal tag unions) to resolve a strict-mode `children: never` type error; removed an assumed `size` prop on Heading (it sizes via `className`).
+
+**Stubbed / TODO:** real profile content; About/Skills/Projects/Resume/Contact sections — Phases 3–5.

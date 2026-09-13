@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { ElementType, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 type Tag = "h1" | "h2" | "h3" | "h4";
 
@@ -13,10 +13,11 @@ export function Heading({
   className?: string;
   children: ReactNode;
 }) {
-  const TagName = as as ElementType;
+  const Component = as;
   return (
-    <TagName className={cn("font-display font-medium leading-[1.05] tracking-tight text-primary", className)}>
+    <Component className={cn("font-display font-medium leading-[1.05] tracking-tight text-primary", className)}>
       {children}
-    </TagName>
+    </Component>
   );
 }
+
